@@ -19,14 +19,7 @@ export class ListPage {
   }
   
   ionViewDidLoad() {
-	  if (this.peopledata.loading) {
-		  setTimeout(
-	         () => {this.people = this.peopledata.getAll()},
-	         500	// half second wait
-	        );
-	  } else {
-		this.people = this.peopledata.getAll();
-	  }
+	  this.people = this.peopledata.getAll();
   }
   
   ionViewDidEnter() {

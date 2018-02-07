@@ -12,7 +12,6 @@ export class PeopleData {
 	
     private filename:string = "people.json";  // persistent data file name
 	people: Person[];					      // the internal database
-	public loading:boolean = false;           // flag to indicate we are loading new people data from file
 	
 	constructor ( private fileSystem:File) {
 		this.loadData();					  // initiate the data load from the file
@@ -93,14 +92,12 @@ export class PeopleData {
 	// load data from our persistent store
 	//
 	loadData() {
-		this.loading=true;	// signal that file load in progress
 		this.fileSystem
             .readAsText(this.fileSystem.dataDirectory, this.filename)
             .then(
                (txt) => { 	// file exists - probably from previous install
 				   console.log("read OK:"+txt);
                    this.people=JSON.parse(txt);
-				   this.loading=false;
 	            },
 			   (err) => {  // assume file does not exist
 				   console.log("Creating new file");
@@ -114,7 +111,6 @@ export class PeopleData {
 							(err) => { console.log("File create error:"+err);}
 						);
 				   this.people = [];
-				   this.loading=false;
 			   });
 	    }
 	
