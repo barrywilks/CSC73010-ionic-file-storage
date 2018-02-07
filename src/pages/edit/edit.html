@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Edit/Delete
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input [(ngModel)]= "name" type="text" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Age</ion-label>
+      <ion-input [(ngModel)] = "age" type="number" min="0" max="120"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button full color="primary" (tap)="doSave()">Save</button>
+  <button ion-button full color="primary" (tap)="doCancel()">Cancel</button>
+  <button ion-button full color="danger"  (tap)="doDelete()">Delete</button>
+  
+</ion-content>
