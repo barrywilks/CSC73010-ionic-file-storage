@@ -7,7 +7,9 @@
 </ion-header>
 
 <ion-content padding>  
-  <p>Press to edit or delete.</p>
+  <ion-list-header>
+       Press to edit or delete.
+  </ion-list-header>
   <ion-list>
       <ion-item *ngFor="let p of people" (press)="edit(p.name)">
 	     <h2>{{p.name}}</h2>
