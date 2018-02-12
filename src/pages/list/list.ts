@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { PeopleData } from '../../app/people.component';
-import { Person } from '../../app/person';
+import { PeopleData, Person } from '../../app/people.component';
 
 import { EditPage } from '../edit/edit';
 
