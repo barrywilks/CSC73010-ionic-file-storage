@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { File } from '@ionic-native/File';
+import { File } from '@ionic-native/file/ngx';
 
 
 export interface Person {
@@ -92,6 +92,7 @@ export class PeopleData {
 	// load data from our persistent store
 	//
 	loadData() {
+		console.log(JSON.stringify(this.fileSystem));
 		this.fileSystem
             .readAsText(this.fileSystem.dataDirectory, this.filename)
             .then(

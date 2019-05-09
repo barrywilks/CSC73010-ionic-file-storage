@@ -1,50 +1,28 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import { RouteReuseStrategy } from '@angular/router';
 
-import { ListPage } from '../pages/list/list';
-import { EditPage } from '../pages/edit/edit';
-import { NewPage } from '../pages/new/new';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { File } from '@ionic-native/file/ngx';
 
-import { StatusBar }    from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { File }         from '@ionic-native/file';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
-import { PeopleData }   from './people.component';
-
+import { PeopleData } from './people.component';
 
 @NgModule({
-  declarations: [
-    MyApp,
-    ListPage,
-	NewPage,
-    EditPage,
-	HomePage,
-    TabsPage
-  ],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(MyApp)
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    ListPage,
-    NewPage,
-	EditPage,
-    HomePage,
-    TabsPage
-  ],
+  declarations: [AppComponent],
+  entryComponents: [],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
     SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 	File,
-//    PeopleData,   // apparently this does not work in the latest version
-	{provide: PeopleData, useClass: PeopleData, deps: [File]}, /* BW Kludge */
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+	PeopleData
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
